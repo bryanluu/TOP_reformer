@@ -14,15 +14,36 @@
   <input type="submit" value="Submit">
 </form>
  -->
+<%
+=begin%>
 <%= form_tag( '/users') do |f| %>
   <%= label_tag("user[email]", "Email:") %>
   <%= email_field_tag("user[email]") %>
-  <br><br>
+  <br>
+  <br>
   <%= label_tag("user[username]", "Username:") %>
   <%= text_field_tag("user[username]") %>
-  <br><br>
+  <br>
+  <br>
   <%= label_tag("user[password]", "Password:") %>
   <%= password_field_tag("user[password]") %>
-  <br><br>
+  <br>
+  <br>
   <%= submit_tag("Submit") %>
+<% end %>
+<%
+=end%>
+<%= form_with(model: @user) do |form| %>
+  <%= form.label :email, value: "Email:" %>
+  <%= form.email_field :email, value: "example@example.com" %>
+  <br>
+  <br>
+  <%= form.label :username, value: "Username:" %>
+  <%= form.text_field :username, value: "foobar" %>
+  <br>
+  <br>
+  <%= form.label :password, value: "Password:" %>
+  <%= form.password_field :password, value: "123456" %>
+  <br><br>
+  <%= form.submit "Create" %>
 <% end %>
